@@ -3,7 +3,7 @@ package com.example.colegio.Entidades;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="acudientes")
+@Table(name="acudiente")
 
 public class Acudiente {
 

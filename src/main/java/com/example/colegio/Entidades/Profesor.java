@@ -3,6 +3,8 @@ package com.example.colegio.Entidades;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "profesor")
 public class Profesor {
@@ -15,16 +17,20 @@ public class Profesor {
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "escalafon", nullable = false)
     private Integer escalafon;
+
+    @OneToMany(mappedBy = "profesor")
+    private List<Materia> materias;
 
     public Profesor() {
     }
 
-    public Profesor(Integer id, String nombre, Integer escalafon) {
+    public Profesor(Integer id, String nombre, Integer escalafon, List<Materia> materias) {
         this.id = id;
         this.nombre = nombre;
         this.escalafon = escalafon;
+        this.materias = materias;
     }
 
     public Integer getId() {
@@ -49,5 +55,13 @@ public class Profesor {
 
     public void setEscalafon(Integer escalafon) {
         this.escalafon = escalafon;
+    }
+
+    public List<Materia> getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(List<Materia> materias) {
+        this.materias = materias;
     }
 }
